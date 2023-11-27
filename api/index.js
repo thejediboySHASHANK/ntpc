@@ -18,10 +18,17 @@ const jwtSecret = 'sjhdgsiu293789dbehjwsjkd238e790eyewuwf389r67'
 // MIDDLEWARES
 app.use(express.json())
 app.use(cookieParser())
+// app.use(cors({
+//     credentials: true,
+//     origin: ' http://192.168.211.1:5173',
+// }))
+
 app.use(cors({
     credentials: true,
-    origin: ' http://192.168.211.1:5173',
-}))
+    origin: ['http://192.168.211.1:5173', 'https://ntpc-eight.vercel.app/',
+        'https://ntpc-git-main-thejediboyshashank.vercel.app/', 'https://ntpc-fapu2ld87-thejediboyshashank.vercel.app/', '*'],
+
+}));
 
 mongoose.connect(process.env.MONGO_URL)
 
