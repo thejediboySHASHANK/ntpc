@@ -32,12 +32,12 @@ app.use(cors({
 
 mongoose.connect(process.env.MONGO_URL)
 
-app.get('/test', (req, res) => {
+app.get('/api/test', (req, res) => {
     res.json('test ok')
 })
 // j2b7s2InQ4oC8EEG
 
-app.post('/register', async (req, res) => {
+app.post('/api/register', async (req, res) => {
     const {
         name,
         email,
@@ -65,7 +65,7 @@ app.post('/register', async (req, res) => {
     }
 })
 
-app.post('/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     const {empId, password} = req.body;
 
     const userDoc = await User.findOne({empId})
@@ -89,7 +89,7 @@ app.post('/login', async (req, res) => {
     }
 })
 
-app.get('/profile', (req, res) => {
+app.get('/api/profile', (req, res) => {
     const {token} = req.cookies
     if (token) {
         jwt.verify(token, jwtSecret, {}, async (err, userData) => {
@@ -102,7 +102,7 @@ app.get('/profile', (req, res) => {
     }
 })
 
-app.post('/logout', (req, res) => {
+app.post('/api/logout', (req, res) => {
     res.cookie('token', '').json(true);
 })
 
@@ -306,7 +306,7 @@ app.post('/logout', (req, res) => {
 //     });
 // });
 
-app.post('/score', async (req, res) => {
+app.post('/api/score', async (req, res) => {
     const { token } = req.cookies;
     const {
         department,
@@ -444,7 +444,7 @@ app.post('/score', async (req, res) => {
 
 
 
-app.get('/5sScores', (req, res) => {
+app.get('/api/5sScores', (req, res) => {
     const {token} = req.cookies
     jwt.verify (token, jwtSecret, {}, async (err, userData) => {
         if (err) {
@@ -468,7 +468,7 @@ app.get('/5sScores', (req, res) => {
     })
 })
 
-app.get('/5sScores/:year', (req, res) => {
+app.get('/api/5sScores/:year', (req, res) => {
     const { token } = req.cookies;
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
         if (err) {
@@ -500,7 +500,7 @@ app.get('/5sScores/:year', (req, res) => {
 
 
 
-app.get('/5sScores/:department/:zoneName/:id', async (req, res) => {
+app.get('/api/5sScores/:department/:zoneName/:id', async (req, res) => {
     const { department, zoneName, id } = req.params;
 
     try {
@@ -686,7 +686,7 @@ app.get('/5sScores/:department/:zoneName/:id', async (req, res) => {
 //     }
 // });
 
-app.put('/score', async (req, res) => {
+app.put('/api/score', async (req, res) => {
     const {
         department,
         zone,
@@ -823,7 +823,7 @@ app.put('/score', async (req, res) => {
 //     }
 // });
 
-app.delete('/5sScores/:department/:zoneName/:id', async (req, res) => {
+app.delete('/api/5sScores/:department/:zoneName/:id', async (req, res) => {
     const { department, zoneName, id } = req.params;
 
     try {
