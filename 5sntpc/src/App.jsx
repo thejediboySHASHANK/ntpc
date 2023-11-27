@@ -14,7 +14,7 @@ import FillScore from "./pages/FillScore.jsx";
 import FillFormPage from "./pages/FillFormPage.jsx";
 import AccountPage from "./pages/AccountPage.jsx";
 
-axios.defaults.baseURL = 'http://192.168.51.65:4000'
+axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL
 axios.defaults.withCredentials = true
 function App() {
 
