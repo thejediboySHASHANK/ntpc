@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply font-sans;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="number"] {
+    @apply w-full border border-gray-300 bg-gray-50 my-2 py-2 px-3 rounded-2xl focus:bg-white;
+
+}
+button {
+    @apply bg-gray-300;
+}
+textarea {
+    height: 140px;
+    @apply w-full border border-gray-300 bg-gray-50 my-2 py-2 px-3 rounded-2xl focus:bg-white
+}
+button.primary {
+    background-color: #0066AD;
+    @apply bg-primary p-2 w-full text-white rounded-2xl;
+}
